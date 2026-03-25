@@ -73,15 +73,3 @@ When `draggingTaskId === task.id`, the card is replaced with a `<div className="
 Touch events use `{ passive: false }` so `preventDefault()` works and drag doesn't conflict with scroll.
 
 ---
-
-## One Thing I'd Refactor With More Time
-
-The **Timeline view** row components aren't memoised — a collaboration user moving between tasks triggers all Gantt rows to re-render. I'd extract `TimelineRow` into `React.memo` keyed on `task.id + task.dueDate` so only the two affected rows update. I'd also pull the virtual scroll logic into a reusable `useVirtualScroll(items, rowHeight, buffer)` hook and apply it to the Timeline for very large datasets.
-
----
-
-## Lighthouse Report
-
-*(Add screenshot as `lighthouse.png` in repo root after running audit on production URL)*
-
-Target: Performance ≥ 85 on desktop
