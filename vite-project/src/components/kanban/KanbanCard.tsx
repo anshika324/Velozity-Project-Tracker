@@ -14,6 +14,7 @@ interface Props {
   onTouchMove: (e: TouchEvent) => void;
   onTouchEnd: (e: TouchEvent) => void;
   isDragging: boolean;
+  isSnapBack?: boolean;
 }
 
 export function KanbanCard({
@@ -21,6 +22,7 @@ export function KanbanCard({
   onDragStart, onDragEnd,
   onTouchStart, onTouchMove, onTouchEnd,
   isDragging,
+  isSnapBack = false,
 }: Props) {
   const viewers = collabUsers.filter((u) => u.currentTaskId === task.id);
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +53,7 @@ export function KanbanCard({
       data-task-id={task.id}
       className={`bg-slate-800 border border-slate-700 rounded-lg p-3 cursor-grab active:cursor-grabbing select-none transition-all hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-900/20 ${
         isDragging ? 'opacity-40 ring-2 ring-indigo-500' : ''
-      }`}
+      } ${isSnapBack ? 'animate-pulse ring-2 ring-rose-400/60' : ''}`}
     >
       {viewers.length > 0 && (
         <div className="flex -space-x-1 mb-2">
