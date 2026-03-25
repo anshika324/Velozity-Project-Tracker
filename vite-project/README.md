@@ -2,8 +2,7 @@
 
 A fully-featured multi-view project management UI built with React, TypeScript, Tailwind CSS, and Zustand.
 
-**Live demo:** [Add Vercel URL here after deployment]
-
+**Live demo:** https://velozity-project-tracker-indol.vercel.app/
 ---
 
 ## Setup Instructions
